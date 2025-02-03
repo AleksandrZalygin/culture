@@ -10,6 +10,6 @@ def read_root():
 def get_items():
     return {"items": ["item1", "item2", "item3"]}
 
-@app.get("/items/{id}")
+@app.get("/items/{item_id}")
 def get_items(item_id):
     return {"item": ["item1", "item2", "item3"][item_id]}
