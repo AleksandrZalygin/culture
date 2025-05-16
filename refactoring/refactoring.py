@@ -1,178 +1,167 @@
-def S(d):return sum(d)
-def P(n):
- if n<2:return False
- for i in range(2,n):
-  if n%i==0:return False
- return True
-class A:
- def __init__(s,x,y):s.x=x;s.y=y
- def D(s):return s.x*s.y
- def __str__(s):return f"{s.x},{s.y}"
-
-def X(a):
- b=[]
- for i in a:
-  if i%2==0:b.append(i)
- return b
-
-def Y(s):
- w=0
- for c in s:
-  if c.isupper():w+=1
- return w
-
-def Z(l):
- m=l[0]
- for v in l:
-  if v>m:m=v
- return m
-
-def Q(a,b):
- c=0
- while b>0:
-  a,b=b,a%b
- return a
-
-def R(s):
- return s[::-1]
-
-def T(n):
- if n==0:return 1
- else:return n*T(n-1)
-
-def U(lst):
- r=[]
- for i in lst:
-  if i not in r:r.append(i)
- return r
-
-def V(s):
- d={}
- for c in s:
-  if c in d:d[c]+=1
-  else:d[c]=1
- return d
-
-def W(a,b):
- return [x for x in a if x in b]
-
-def J(n):
- f=1
- for i in range(1,n+1):f*=i
- return f
-
-def K(s):
- return s.lower().replace(" ","")
-
-def L(n):
- return [i for i in range(n) if i%2!=0]
-
-def M(m):
- return [[0]*m for _ in range(m)]
-
-def N(lst):
- return [x for x in lst if x>0]
-
-def O(s):
- return sum(1 for c in s if c.isdigit())
-
-def G(a,b):
- return a if a>b else b
-
-def H(s):
- return s==s[::-1]
-
-def I(n):
- return str(n)==str(n)[::-1]
-
-def C(temp):
- return (temp*9/5)+32
-
-def D(f):
- return (f-32)*5/9
-
-def E(s):
- v=['a','e','i','o','u']
- return sum(1 for c in s.lower() if c in v)
-
-def F(s):
- return ''.join(c for c in s if c.isalnum())
-
-def _():
- print("Это пустая функция")
-
-x1=10
-x2=20
-x3=x1+x2
-print(x3)
-
-lst1=[1,2,3,4,5]
-lst2=[x*2 for x in lst1]
-print(lst2)
-
-dct={'a':1,'b':2}
-print(dct.get('a'))
-
-s="HeLLo WoRLd"
-print(Y(s))
+from typing import List, Dict, Union, Set, Any
 
 
+def calculate_sum(numbers: List[float]) -> float:
+    """Возвращает сумму элементов списка."""
+    return sum(numbers)
 
 
+def is_prime(number: int) -> bool:
+    """Проверяет, является ли число простым."""
+    if number < 2:
+        return False
+    for divisor in range(2, int(number ** 0.5) + 1):
+        if number % divisor == 0:
+            return False
+    return True
 
 
-a=5
-b=10
-print(G(a,b))
-s="racecar"
-print(H(s))
-n=12321
-print(I(n))
-temp=25
-print(C(temp))
-s="Python is cool!"
-print(E(s))
-pt=A(3,4)
-print(pt.D())
-print(pt)
+class Point:
+    """Класс, представляющий точку в 2D-пространстве."""
+
+    def __init__(self, x: float, y: float) -> None:
+        self.x = x
+        self.y = y
+
+    def calculate_area(self) -> float:
+        """Вычисляет площадь (в данном случае — произведение координат)."""
+        return self.x * self.y
+
+    def __str__(self) -> str:
+        return f"Point({self.x}, {self.y})"
 
 
-x=42
-y=7
-print(Q(x,y))
+def filter_even_numbers(numbers: List[int]) -> List[int]:
+    """Возвращает список только с четными числами."""
+    return [num for num in numbers if num % 2 == 0]
 
-s="abcba"
-print(R(s))
 
-num=5
-print(T(num))
+def count_uppercase_letters(text: str) -> int:
+    """Считает количество заглавных букв в строке."""
+    return sum(1 for char in text if char.isupper())
 
-lst=[1,2,2,3,3,3]
-print(U(lst))
 
-s="hello"
-print(V(s))
+def find_max_value(numbers: List[float]) -> float:
+    """Находит максимальное значение в списке."""
+    if not numbers:
+        raise ValueError("Список не должен быть пустым")
+    return max(numbers)
 
-a=[1,2,3]
-b=[3,4,5]
-print(W(a,b))
 
-n=4
-print(J(n))
+def compute_gcd(a: int, b: int) -> int:
+    """Вычисляет НОД двух чисел по алгоритму Евклида."""
+    while b:
+        a, b = b, a % b
+    return a
 
-s="  HELLO  "
-print(K(s))
 
-n=10
-print(L(n))
+def reverse_string(text: str) -> str:
+    """Возвращает строку в обратном порядке."""
+    return text[::-1]
 
-m=3
-print(M(m))
 
-lst=[-1,0,1,2]
-print(N(lst))
+def factorial_recursive(n: int) -> int:
+    """Вычисляет факториал числа рекурсивно."""
+    if n < 0:
+        raise ValueError("Факториал отрицательного числа не определен")
+    return 1 if n == 0 else n * factorial_recursive(n - 1)
 
-s="a1b2c3"
-print(O(s))
 
-_()
+def remove_duplicates(items: List[Any]) -> List[Any]:
+    """Удаляет дубликаты из списка, сохраняя порядок."""
+    seen = set()
+    return [item for item in items if not (item in seen or seen.add(item))]
+
+
+def count_char_frequency(text: str) -> Dict[str, int]:
+    """Считает частоту каждого символа в строке."""
+    frequency = {}
+    for char in text:
+        frequency[char] = frequency.get(char, 0) + 1
+    return frequency
+
+
+def find_common_elements(list1: List[Any], list2: List[Any]) -> List[Any]:
+    """Находит пересечение двух списков."""
+    return list(set(list1) & set(list2))
+
+
+def celsius_to_fahrenheit(celsius: float) -> float:
+    """Конвертирует градусы Цельсия в Фаренгейты."""
+    return (celsius * 9 / 5) + 32
+
+
+def fahrenheit_to_celsius(fahrenheit: float) -> float:
+    """Конвертирует градусы Фаренгейта в Цельсии."""
+    return (fahrenheit - 32) * 5 / 9
+
+
+def count_vowels(text: str) -> int:
+    """Считает количество гласных букв в строке."""
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    return sum(1 for char in text.lower() if char in vowels)
+
+
+def is_palindrome(text: str) -> bool:
+    """Проверяет, является ли строка палиндромом."""
+    clean_text = ''.join(char.lower() for char in text if char.isalnum())
+    return clean_text == clean_text[::-1]
+
+
+def is_number_palindrome(number: int) -> bool:
+    """Проверяет, является ли число палиндромом."""
+    return str(number) == str(number)[::-1]
+
+
+def filter_positive_numbers(numbers: List[float]) -> List[float]:
+    """Фильтрует положительные числа из списка."""
+    return [num for num in numbers if num > 0]
+
+
+def count_digits(text: str) -> int:
+    """Считает количество цифр в строке."""
+    return sum(1 for char in text if char.isdigit())
+
+
+def generate_zero_matrix(size: int) -> List[List[int]]:
+    """Генерирует квадратную матрицу нулей заданного размера."""
+    return [[0 for _ in range(size)] for _ in range(size)]
+
+
+def get_odd_numbers(limit: int) -> List[int]:
+    """Возвращает список нечетных чисел до заданного предела."""
+    return [num for num in range(limit) if num % 2 != 0]
+
+
+def clean_string(text: str) -> str:
+    """Удаляет из строки все символы, кроме букв и цифр."""
+    return ''.join(char for char in text if char.isalnum())
+
+
+def main() -> None:
+    """Демонстрация работы всех функций."""
+    numbers = [1, 2, 3, 4, 5]
+    print(f"Сумма чисел: {calculate_sum(numbers)}")
+    print(f"Четные числа: {filter_even_numbers(numbers)}")
+    print(f"Максимальное значение: {find_max_value(numbers)}")
+    print(f"НОД 48 и 18: {compute_gcd(48, 18)}")
+    print(f"Факториал 5: {factorial_recursive(5)}")
+    print(f"Уникальные элементы: {remove_duplicates([1, 2, 2, 3])}")
+
+    text = "Hello, World!"
+    print(f"Количество заглавных букв: {count_uppercase_letters(text)}")
+    print(f"Частота символов: {count_char_frequency(text)}")
+    print(f"Реверс строки: {reverse_string(text)}")
+    print(f"Гласные буквы: {count_vowels(text)}")
+    print(f"Является ли 'racecar' палиндромом? {is_palindrome('racecar')}")
+
+    point = Point(3, 4)
+    print(f"Точка: {point}")
+    print(f"Площадь (x*y): {point.calculate_area()}")
+
+    print(f"25°C в Фаренгейтах: {celsius_to_fahrenheit(25)}")
+    print(f"77°F в Цельсиях: {fahrenheit_to_celsius(77)}")
+
+
+if __name__ == "__main__":
+    main()
